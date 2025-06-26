@@ -60,7 +60,7 @@ button:nth-child(4),
 button:nth-child(8),
 button:nth-child(12),
 button:nth-child(16),
-button:nth-child(19) {
+button:nth-child(20) {
     background: linear-gradient(180deg, #0072ff 0%, #0056cc 100%);
     color: #fff;
     font-weight: bold;
@@ -72,7 +72,7 @@ button:nth-child(4):hover,
 button:nth-child(8):hover,
 button:nth-child(12):hover,
 button:nth-child(16):hover,
-button:nth-child(19):hover {
+button:nth-child(20):hover {
     background: #0056cc;
 }
 .logo {
