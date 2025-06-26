@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Taschenrechner</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div class="logo">
+		<img src="assets/logo.png" alt="MagiCalc Logo">
+	</div>
+	<div class="container">
+		<div class="calculator">
+			<input type="text" id="display" disabled>
+			<button id="history-toggle" class="history-toggle">📋 History</button>
+			<div class="buttons">
+				<button>C</button>
+				<button>⌫</button>
+				<button>%</button>
+				<button>/</button>
+				<button>7</button>
+				<button>8</button>
+				<button>9</button>
+				<button>*</button>
+				<button>4</button>
+				<button>5</button>
+				<button>6</button>
+				<button>-</button>
+				<button>1</button>
+				<button>2</button>
+				<button>3</button>
+				<button>+</button>
+				<button>0</button>
+				<button>.</button>
+				<button>=</button>
+			</div>
+		</div>
+		<div class="history-panel">
+			<h3>History</h3>
+			<div id="history-list"></div>
+			<button id="clear-history">Clear History</button>
+		</div>
+	</div>
+	<div class="mobile-history-overlay" id="mobile-history-overlay">
+		<div class="mobile-history-content">
+			<div class="mobile-history-header">
+				<h3>History</h3>
+				<button id="close-history">✕</button>
+			</div>
+			<div id="mobile-history-list"></div>
+			<button id="mobile-clear-history">Clear History</button>
+		</div>
+	</div>
+	<script src="javascript/javascript.js"></script>
+</body>
+</html>
