@@ -10,6 +10,7 @@ const mobileClearHistory = document.getElementById('mobile-clear-history');
 
 let currentInput = '';
 let calculationHistory = [];
+let calculationCompleted = false;
 
 if (localStorage.getItem('calculatorHistory')) {
     calculationHistory = JSON.parse(localStorage.getItem('calculatorHistory'));
@@ -22,9 +23,11 @@ buttons.forEach(button => {
         if (value === 'C') {
             currentInput = '';
             display.value = '';
+            calculationCompleted = false;
         } else if (value === '⌫') {
             currentInput = currentInput.slice(0, -1);
             display.value = currentInput;
+            calculationCompleted = false;
         } else if (value === '=') {
             try {
                 const result = eval(currentInput);
@@ -45,17 +48,24 @@ buttons.forEach(button => {
                 
                 currentInput = result.toString();
                 display.value = currentInput;
+                calculationCompleted = true;
             } catch {
                 display.value = 'Error';
                 currentInput = '';
+                calculationCompleted = false;
             }
         } else if (value === '.') {
-            const parts = currentInput.split(/[-+*/]/);
-            const lastPart = parts[parts.length - 1];
-            if (!lastPart.includes('.')) {
-                currentInput += value;
-                display.value = currentInput;
+            if (calculationCompleted) {
+                currentInput = '0.';
+                calculationCompleted = false;
+            } else {
+                const parts = currentInput.split(/[-+*/]/);
+                const lastPart = parts[parts.length - 1];
+                if (!lastPart.includes('.')) {
+                    currentInput += value;
+                }
             }
+            display.value = currentInput;
         } else if (value === '%') {
             const parts = currentInput.split(/([-+*/])/);
             for (let i = parts.length - 1; i >= 0; i--) {
@@ -66,8 +76,14 @@ buttons.forEach(button => {
             }
             currentInput = parts.join('');
             display.value = currentInput;
+            calculationCompleted = false;
         } else {
-            currentInput += value;
+            if (calculationCompleted && !isNaN(value)) {
+                currentInput = value;
+                calculationCompleted = false;
+            } else {
+                currentInput += value;
+            }
             display.value = currentInput;
         }
     });
