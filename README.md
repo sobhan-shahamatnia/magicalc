@@ -8,6 +8,10 @@ MagiCalc is a simple offline calculator web app.
 - History is saved in your browser's local storage, so it persists between sessions
 - Mobile-friendly design
 
+## Screenshot
+
+![Screenshot of MagiCalc](assets/Sc.png)
+
 ## Usage
 Just open `index.htm` in your browser and start calculating!
 
