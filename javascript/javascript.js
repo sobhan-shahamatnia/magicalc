@@ -78,10 +78,25 @@ buttons.forEach(button => {
             display.value = currentInput;
             calculationCompleted = false;
         } else {
-            if (calculationCompleted && !isNaN(value)) {
-                currentInput = value;
-                calculationCompleted = false;
+            // Check if the value is an operator
+            const isOperator = ['+', '-', '*', '/'].includes(value);
+            
+            if (calculationCompleted) {
+                if (isOperator) {
+                    // If calculation is completed and user presses an operator, continue with the result
+                    currentInput += value;
+                    calculationCompleted = false;
+                } else if (!isNaN(value)) {
+                    // If calculation is completed and user enters a number, start fresh
+                    currentInput = value;
+                    calculationCompleted = false;
+                } else {
+                    // For other characters (like fn button), just add them
+                    currentInput += value;
+                    calculationCompleted = false;
+                }
             } else {
+                // Normal operation - just add the value
                 currentInput += value;
             }
             display.value = currentInput;
